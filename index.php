@@ -61,13 +61,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         <div class="modal-dialog" role="document">
           <div class="modal-content">
               <div class="modal-header">
-              <h5 class="modal-title" id="editModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="editModalLabel">Edit Note</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-              ...
+                  <form action="/CRUD/index.php" method="post">
+                    <input type="hidden" name="snoEdit" id="snoEdit">
+                    <div class="form-group">
+                      <label for="title">Note Title</label>
+                      <input type="text" class="form-control" id="titleEdit" name="titleEdit">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Note Description</label>
+                        <textarea class="form-control" id="descriptionEdit" name="descriptionEdit" rows="3"></textarea>
+                      </div>
+                    <button type="submit" class="btn btn-primary">Update Note</button>
+                  </form>
               </div>
               <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -195,7 +206,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 edits = document.getElementsByClassName('edit');
 Array.from(edits).forEach( (element) => {
   element.addEventListener("click", (e)=>{
-    console.log("edit",e);
+    console.log("edit",);
+    tr = e.target.parentNode.parentNode;
+    title = tr.getElementsByTagName("td")[0].innerText;
+    description = tr.getElementsByTagName("td")[1].innerText;
+    console.log(title,description);
+    descriptionEdit.value=description;
+    titleEdit.value=title;
+    $('#editModal').modal('toggle')
+
   } )
 } )
 
