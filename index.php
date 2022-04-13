@@ -45,30 +45,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script>
-      $(document).ready( function () {
-        $('#myTable').DataTable();
-      } )
-    </script>
     <title>iNotes - Notes Taking Made Easy</title>
+  
   </head>
 
 
   <body>
 
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">
     Edit Modal
-  </button>
+  </button> -->
     
     <!-- Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
@@ -168,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                       <th scope='row'>" . $sno . "</th>
                       <td>" . $row['title'] . "</td>
                       <td>" . $row['description'] . "</td>
-                      <td> <a href='/edit'> Edit </a> <a href='/del'> Delete  </a> </td>
+                      <td> <button class='edit btn btn-primary btn-sm'> Edit </button> <a href='/del'> Delete  </a> </td>
                     </tr>";
                   }
             ?>
@@ -180,20 +166,47 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
       </div>
 
 
+      
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<style>
+  .container{
+    padding-top: 30px;
+  }
+</style>
+
+<script>
+  $(document).ready( function () {
+    $('#myTable').DataTable();
+  } )
+</script>
+
+<script>
+
+edits = document.getElementsByClassName('edit');
+Array.from(edits).forEach( (element) => {
+  element.AddEventListener("click", (e)=>{
+    console.log("edit",e);
+  } )
+} )
+
+</script>
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   </body>
 </html>
-
-<style>
-
-    .container{
-        padding-top: 30px;
-    }
-
-</style>
-
 
 
 
