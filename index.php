@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 edits = document.getElementsByClassName('edit');
 Array.from(edits).forEach( (element) => {
-  element.AddEventListener("click", (e)=>{
+  element.addEventListener("click", (e)=>{
     console.log("edit",e);
   } )
 } )
